@@ -17,7 +17,7 @@ const send = document.querySelector('input');
 const result = document.getElementById('result');
 // richiamo funzionalità al bottone
 
-let boxAr = [];
+let bombAr = [];
 
 
 send.addEventListener('click', function () {
@@ -36,15 +36,26 @@ send.addEventListener('click', function () {
 
     }
 });
+
+//  generato un numero random
+let bomb = parseInt(getRndInteger(1, 100));
+
+console.log(bomb)
+
 // creo una funzione per generare 16 numeri random 
 
-    let bomb = getRndInteger(1, 100);
+function bombBox() {
+    const bomb = 16;
+    for (let i = 0; i < box; i++) {
+        if (box !== 16) {
+            bombAr.push(bomb)
+        } 
+        console.log(boxAr);
+    }
   
-    boxAr.push(bomb)
-    console.log (boxAr);
+}
 
-
-    // fare funzione per numero random rosso(bomba)
+// fare funzione per numero random rosso(bomba)
 //     bomb.addEventListener('click', function () {
 //         const cpu = document.getElementById('cpu');
 //         const cpuNum = getRndInteger(1, 100);
@@ -54,7 +65,7 @@ send.addEventListener('click', function () {
 //         console.log(cpuNum);
 //     });
 //     return squareNum;
- 
+
 
 
 
@@ -71,11 +82,12 @@ function miniSquare(squareEl, squareNum) {
     square.style.height = square.style.width;
     square.innerHTML = squareEl;
     square.addEventListener('click', function () {
-        //     if (squareEl % 2 === 0){
-        //     square.classList.add('active');
-        // } else {
-        //     square.classList.add('bomb');
-        // }
+        if (squareEl !== bomb) {
+            square.classList.add('active');
+        } else {
+            square.classList.add('bomb');
+            bomb.innerHTML = '<i class="fa-solid fa-bomb fa-flip"></i>';
+        }
         square.classList.add('active');
         result.innerHTML = 'hai cliccato la casella' + ' ' + squareEl;
     })
