@@ -41,42 +41,20 @@ send.addEventListener('click', function () {
 // creazione bombe
 function createBombs() {
     let bombs = [];
-    let i = 1;
+    let i = 0;
+    //  generare 16 numeri random 
     while (i < 16) {
-      
+        //  generato un numero random
         let bomb = parseInt(getRndInteger(1, 100));
         // e l'aggiungo solo se non è già presente
-        if (!bombs.includes(bomb)){
+        if (!bombs.includes(bomb)) {
             bombs.push(bomb)
         }
         i++;
     }
     return bombs
-  
+
 }
-
-
-
-//  generato un numero random
-// creo una funzione per generare 16 numeri random 
-
-
-
-// fare funzione per numero random rosso(bomba)
-//     bomb.addEventListener('click', function () {
-//         const cpu = document.getElementById('cpu');
-//         const cpuNum = getRndInteger(1, 100);
-//         let bomb = miniSquare(cpuNum);
-
-//         square.classList.add('bomb');
-//         console.log(cpuNum);
-//     });
-//     return squareNum;
-
-
-
-
-
 // fare una funzione per creare un quadratino
 
 function miniSquare(squareEl, squareNum) {
@@ -89,7 +67,7 @@ function miniSquare(squareEl, squareNum) {
     square.style.height = square.style.width;
     square.innerHTML = squareEl;
     square.addEventListener('click', function () {
-        if (squareEl !== bomb) {
+        if (squareEl !== bombs[i]) {
             square.classList.add('active');
             result.innerHTML = 'hai cliccato la casella' + ' ' + squareEl;
         } else {
@@ -108,3 +86,16 @@ function miniSquare(squareEl, squareNum) {
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+
+
+// fare funzione per numero random rosso(bomba)
+//     bomb.addEventListener('click', function () {
+//         const cpu = document.getElementById('cpu');
+//         const cpuNum = getRndInteger(1, 100);
+//         let bomb = miniSquare(cpuNum);
+
+//         square.classList.add('bomb');
+//         console.log(cpuNum);
+//     });
+//     return squareNum;
