@@ -15,10 +15,12 @@
 // 2. creare bottone per generare quadratini
 const send = document.querySelector('input');
 const result = document.getElementById('result');
+
+let bombAr = createBombs();
+const numBomb = 16;
+console.log(bombAr)
+
 // richiamo funzionalità al bottone
-
-let bombAr = [];
-
 
 send.addEventListener('click', function () {
     // dichiaro la costante della griglia intera
@@ -33,27 +35,32 @@ send.addEventListener('click', function () {
         let square = miniSquare(i, squareNum);
         // appendo il quadratino alla griglia
         playground.append(square);
-
     }
+
 });
-
-//  generato un numero random
-let bomb = parseInt(getRndInteger(1, 100));
-
-console.log(bomb)
-
-// creo una funzione per generare 16 numeri random 
-
-function bombBox() {
-    const bomb = 16;
-    for (let i = 0; i < box; i++) {
-        if (box !== 16) {
-            bombAr.push(bomb)
-        } 
-        console.log(boxAr);
+// creazione bombe
+function createBombs() {
+    let bombs = [];
+    let i = 1;
+    while (i < 16) {
+      
+        let bomb = parseInt(getRndInteger(1, 100));
+        // e l'aggiungo solo se non è già presente
+        if (!bombs.includes(bomb)){
+            bombs.push(bomb)
+        }
+        i++;
     }
+    return bombs
   
 }
+
+
+
+//  generato un numero random
+// creo una funzione per generare 16 numeri random 
+
+
 
 // fare funzione per numero random rosso(bomba)
 //     bomb.addEventListener('click', function () {
@@ -84,12 +91,13 @@ function miniSquare(squareEl, squareNum) {
     square.addEventListener('click', function () {
         if (squareEl !== bomb) {
             square.classList.add('active');
+            result.innerHTML = 'hai cliccato la casella' + ' ' + squareEl;
         } else {
             square.classList.add('bomb');
-            bomb.innerHTML = '<i class="fa-solid fa-bomb fa-flip"></i>';
+
         }
-        square.classList.add('active');
-        result.innerHTML = 'hai cliccato la casella' + ' ' + squareEl;
+
+
     })
     return square;
 };
