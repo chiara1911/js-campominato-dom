@@ -17,6 +17,8 @@ const send = document.querySelector('input');
 const result = document.getElementById('result');
 // richiamo funzionalità al bottone
 
+let boxAr = [];
+
 
 send.addEventListener('click', function () {
     // dichiaro la costante della griglia intera
@@ -34,6 +36,14 @@ send.addEventListener('click', function () {
 
     }
 });
+// creo una funzione per generare 16 numeri random 
+
+    let bomb = getRndInteger(1, 100);
+  
+    boxAr.push(bomb)
+    console.log (boxAr);
+
+
     // fare funzione per numero random rosso(bomba)
 //     bomb.addEventListener('click', function () {
 //         const cpu = document.getElementById('cpu');
