@@ -82,7 +82,8 @@ function miniSquare(squareEl, allBox) {
     square.addEventListener('click', function () {
         if (bombAr.includes(squareEl)) {
             square.classList.add('bomb');
-            alert("hai perso!");
+            square.innerHTML ='<i class="fa-solid fa-bomb fa-flip fa-xl"></i>';
+            alert("OPS! Hai trovato una bomba, quindi hai perso!");
 
         } else {
             square.classList.add('active');
